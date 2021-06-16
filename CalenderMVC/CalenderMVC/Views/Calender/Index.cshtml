@@ -1,0 +1,548 @@
+﻿@model CalenderMVC.Models.CalenderModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+@{ 
+    var sundayRows = Model.SundayList.Count;
+    var mondayRows = Model.MondayList.Count;
+    var tuesdayRows = Model.TuesdayList.Count;
+    var wednesdayRows = Model.WednesdayList.Count;
+    var thursdayRows = Model.ThursdayList.Count;
+    var fridayRows = Model.FridayList.Count;
+    var saturdayRows = Model.SaturdayList.Count;
+}
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Calender</title>
+    <base href="https://demos.telerik.com/kendo-ui/grid/from-table">
+    <style>
+        html {
+            font-size: 14px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2021.2.511/styles/kendo.default-v2.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" />
+    <script src="https://kendo.cdn.telerik.com/2021.2.511/js/jquery.min.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2021.2.511/js/kendo.all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <h2>Calender</h2>
+    <div>
+        <label for="cars">Period:</label>
+        <select name="period" id="period">
+            <option value="1">1 Week</option>
+            <option value="2">2 Week</option>
+            <option value="3">Month</option>
+        </select>
+    </div><br />
+
+    <div id="example">
+        <div id="vertical">
+            <div id="top-pane">
+                <div id="horizontal" style="height: 100%; width: 100%;">
+                    <div id="pane">
+                        <table id="tbl1">
+                            <colgroup>
+                                <col style="width:75px;" />
+                                <col style="width:120px;" />
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th data-field="time"></th>
+                                    <th data-field="day">@ViewBag.Date[0].DayOfWeek<br />@ViewBag.Date[0].ToString("dd/MM/yyyy")<label>(@sundayRows)</label></th>
+                                    <th style="display:none;" data-field="R"></th>
+                                    <th style="display:none;" data-field="G"></th>
+                                    <th style="display:none;" data-field="B"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (Model.SundayList != null)
+                                {
+                                    foreach (var item in Model.SundayList)
+                                    {
+                                        <tr>
+                                            <td>@item.JobDate.TimeOfDay</td>
+                                            <td>@item.Name</td>
+                                            <td>@item.BR</td>
+                                            <td>@item.BG</td>
+                                            <td>@item.BB</td>
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="pane1">
+                        <table id="tbl2">
+                            <colgroup>
+                                <col style="width:75px;" />
+                                <col style="width:120px;" />
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th data-field="time"></th>
+                                    <th data-field="day">@ViewBag.Date[1].DayOfWeek<br />@ViewBag.Date[1].ToString("dd/MM/yyyy")<label>(@mondayRows)</label></th>
+                                    <th style="display:none;" data-field="R"></th>
+                                    <th style="display:none;" data-field="G"></th>
+                                    <th style="display:none;" data-field="B"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (Model.MondayList != null)
+                                {
+                                    foreach (var item in Model.MondayList)
+                                    {
+                                        <tr>
+                                            <td>@item.JobDate.TimeOfDay</td>
+                                            <td>@item.Name</td>
+                                            <td>@item.BR</td>
+                                            <td>@item.BG</td>
+                                            <td>@item.BB</td>
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="pane2">
+                        <table id="tbl3">
+                            <colgroup>
+                                <col style="width:75px;" />
+                                <col style="width:120px;" />
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th data-field="time"></th>
+                                    <th data-field="day">@ViewBag.Date[2].DayOfWeek<br />@ViewBag.Date[2].ToString("dd/MM/yyyy")<label>(@tuesdayRows)</label></th>
+                                    <th style="display:none;" data-field="R"></th>
+                                    <th style="display:none;" data-field="G"></th>
+                                    <th style="display:none;" data-field="B"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (Model.TuesdayList != null)
+                                {
+                                    foreach (var item in Model.TuesdayList)
+                                    {
+                                        <tr>
+                                            <td>@item.JobDate.TimeOfDay</td>
+                                            <td>@item.Name</td>
+                                            <td>@item.BR</td>
+                                            <td>@item.BG</td>
+                                            <td>@item.BB</td>
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="pane3">
+                        <table id="tbl4">
+                            <colgroup>
+                                <col style="width:75px" />
+                                <col style="width:120px" />
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th data-field="time"></th>
+                                    <th data-field="day">@ViewBag.Date[3].DayOfWeek<br />@ViewBag.Date[3].ToString("dd/MM/yyyy")<label>(@wednesdayRows)</label></th>
+                                    <th style="display:none;" data-field="R"></th>
+                                    <th style="display:none;" data-field="G"></th>
+                                    <th style="display:none;" data-field="B"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (Model.WednesdayList != null)
+                                {
+                                    foreach (var item in Model.WednesdayList)
+                                    {
+                                        <tr>
+                                            <td>@item.JobDate.TimeOfDay</td>
+                                            <td>@item.Name</td>
+                                            <td>@item.BR</td>
+                                            <td>@item.BG</td>
+                                            <td>@item.BB</td>
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="pane4">
+                        <table id="tbl5">
+                            <colgroup>
+                                <col style="width:75px" />
+                                <col style="width:120px" />
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th data-field="time"></th>
+                                    <th data-field="day">@ViewBag.Date[4].DayOfWeek<br />@ViewBag.Date[4].ToString("dd/MM/yyyy")<label>(@thursdayRows)</label></th>
+                                    <th style="display:none;" data-field="R"></th>
+                                    <th style="display:none;" data-field="G"></th>
+                                    <th style="display:none;" data-field="B"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (Model.ThursdayList != null)
+                                {
+                                    foreach (var item in Model.ThursdayList)
+                                    {
+                                        <tr>
+                                            <td>@item.JobDate.TimeOfDay</td>
+                                            <td>@item.Name</td>
+                                            <td>@item.BR</td>
+                                            <td>@item.BG</td>
+                                            <td>@item.BB</td>
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="pane5">
+                        <table id="tbl6">
+                            <colgroup>
+                                <col style="width:75px" />
+                                <col style="width:120px" />
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th data-field="time"></th>
+                                    <th data-field="day">@ViewBag.Date[5].DayOfWeek<br />@ViewBag.Date[5].ToString("dd/MM/yyyy")<label>(@fridayRows)</label></th>
+                                    <th style="display:none;" data-field="R"></th>
+                                    <th style="display:none;" data-field="G"></th>
+                                    <th style="display:none;" data-field="B"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (Model.FridayList != null)
+                                {
+                                    foreach (var item in Model.FridayList)
+                                    {
+                                        <tr>
+                                            <td>@item.JobDate.TimeOfDay</td>
+                                            <td>@item.Name</td>
+                                            <td>@item.BR</td>
+                                            <td>@item.BG</td>
+                                            <td>@item.BB</td>
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="pane6">
+                        <table id="tbl7">
+                            <colgroup>
+                                <col style="width:75px" />
+                                <col style="width:120px" />
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th data-field="time"></th>
+                                    <th data-field="day">@ViewBag.Date[6].DayOfWeek<br />@ViewBag.Date[6].ToString("dd/MM/yyyy")<label>(@saturdayRows)</label></th>
+                                    <th style="display:none;" data-field="R"></th>
+                                    <th style="display:none;" data-field="G"></th>
+                                    <th style="display:none;" data-field="B"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (Model.SaturdayList != null)
+                                {
+                                    foreach (var item in Model.SaturdayList)
+                                    {
+                                        <tr>
+                                            <td>@item.JobDate.TimeOfDay</td>
+                                            <td>@item.Name</td>
+                                            <td>@item.BR</td>
+                                            <td>@item.BG</td>
+                                            <td>@item.BB</td>
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+    $(document).ready(function () {
+
+        var grid1 = $("#tbl1").kendoGrid({
+            height: 550,
+            sortable: true,
+            scrollable: false,
+            resizable: true,
+            draggable: true,
+            dataBound: function (e) {
+                var columns = e.sender.columns;
+                var columnIndex = this.wrapper.find(".k-grid-header [data-field=" + "day" + "]").index();
+                var rIndex = this.wrapper.find(".k-grid-header [data-field=" + "R" + "]").index();
+                var gIndex = this.wrapper.find(".k-grid-header [data-field=" + "G" + "]").index();
+                var bIndex = this.wrapper.find(".k-grid-header [data-field=" + "B" + "]").index();
+                var rows = e.sender.tbody.children();
+                dataBound(e, columnIndex, rows, rIndex, gIndex, bIndex);
+            }
+        });
+
+        var grid2 = $("#tbl2").kendoGrid({
+            height: 550,
+            sortable: true,
+            scrollable: false,
+            resizable: true,
+            draggable: true,
+            dataBound: function (e) {
+                var columns = e.sender.columns;
+                var columnIndex = this.wrapper.find(".k-grid-header [data-field=" + "day" + "]").index();
+                var rIndex = this.wrapper.find(".k-grid-header [data-field=" + "R" + "]").index();
+                var gIndex = this.wrapper.find(".k-grid-header [data-field=" + "G" + "]").index();
+                var bIndex = this.wrapper.find(".k-grid-header [data-field=" + "B" + "]").index();
+                var rows = e.sender.tbody.children();
+                dataBound(e, columnIndex, rows, rIndex, gIndex, bIndex);
+            }
+        });
+
+        var grid3 = $("#tbl3").kendoGrid({
+            height: 550,
+            sortable: true,
+            scrollable: false,
+            resizable: true,
+            draggable: true,
+            dataBound: function (e) {
+                var columns = e.sender.columns;
+                var columnIndex = this.wrapper.find(".k-grid-header [data-field=" + "day" + "]").index();
+                var rIndex = this.wrapper.find(".k-grid-header [data-field=" + "R" + "]").index();
+                var gIndex = this.wrapper.find(".k-grid-header [data-field=" + "G" + "]").index();
+                var bIndex = this.wrapper.find(".k-grid-header [data-field=" + "B" + "]").index();
+                var rows = e.sender.tbody.children();
+                dataBound(e, columnIndex, rows, rIndex, gIndex, bIndex);
+            }
+        });
+
+        var grid4 = $("#tbl4").kendoGrid({
+            height: 550,
+            sortable: true,
+            scrollable: false,
+            resizable: true,
+            draggable: true,
+            dataBound: function (e) {
+                var columns = e.sender.columns;
+                var columnIndex = this.wrapper.find(".k-grid-header [data-field=" + "day" + "]").index();
+                var rIndex = this.wrapper.find(".k-grid-header [data-field=" + "R" + "]").index();
+                var gIndex = this.wrapper.find(".k-grid-header [data-field=" + "G" + "]").index();
+                var bIndex = this.wrapper.find(".k-grid-header [data-field=" + "B" + "]").index();
+                var rows = e.sender.tbody.children();
+                dataBound(e, columnIndex, rows, rIndex, gIndex, bIndex);
+            }
+        });
+
+        var grid5 = $("#tbl5").kendoGrid({
+            height: 550,
+            sortable: true,
+            scrollable: false,
+            resizable: true,
+            draggable: true,
+            dataBound: function (e) {
+                var columns = e.sender.columns;
+                var columnIndex = this.wrapper.find(".k-grid-header [data-field=" + "day" + "]").index();
+                var rIndex = this.wrapper.find(".k-grid-header [data-field=" + "R" + "]").index();
+                var gIndex = this.wrapper.find(".k-grid-header [data-field=" + "G" + "]").index();
+                var bIndex = this.wrapper.find(".k-grid-header [data-field=" + "B" + "]").index();
+                var rows = e.sender.tbody.children();
+                dataBound(e, columnIndex, rows, rIndex, gIndex, bIndex);
+            }
+        });
+
+        var grid6 = $("#tbl6").kendoGrid({
+            height: 550,
+            sortable: true,
+            scrollable: false,
+            resizable: true,
+            draggable: true,
+            dataBound: function (e) {
+                var columns = e.sender.columns;
+                var columnIndex = this.wrapper.find(".k-grid-header [data-field=" + "day" + "]").index();
+                var rIndex = this.wrapper.find(".k-grid-header [data-field=" + "R" + "]").index();
+                var gIndex = this.wrapper.find(".k-grid-header [data-field=" + "G" + "]").index();
+                var bIndex = this.wrapper.find(".k-grid-header [data-field=" + "B" + "]").index();
+                var rows = e.sender.tbody.children();
+                dataBound(e, columnIndex, rows, rIndex, gIndex, bIndex);
+            }
+        });
+
+        var grid7 = $("#tbl7").kendoGrid({
+            height: 550,
+            sortable: true,
+            scrollable: false,
+            resizable: true,
+            draggable: true,
+            dataBound: function (e) {
+                var columns = e.sender.columns;
+                var columnIndex = this.wrapper.find(".k-grid-header [data-field=" + "day" + "]").index();
+                var rIndex = this.wrapper.find(".k-grid-header [data-field=" + "R" + "]").index();
+                var gIndex = this.wrapper.find(".k-grid-header [data-field=" + "G" + "]").index();
+                var bIndex = this.wrapper.find(".k-grid-header [data-field=" + "B" + "]").index();
+                var rows = e.sender.tbody.children();
+                dataBound(e, columnIndex, rows, rIndex, gIndex, bIndex);
+            }
+        });
+
+        function dataBound(e, columnIndex, rows, rIndex, gIndex, bIndex) {
+            for (var j = 0; j < rows.length; j++) {
+                var row = $(rows[j]);
+                var dataItem = e.sender.dataItem(row);
+                var units = dataItem.get("day");
+                var cell = row.children().eq(columnIndex);
+                var rCell = row.children().eq(rIndex);
+                var gCell = row.children().eq(gIndex);
+                var bCell = row.children().eq(bIndex);
+                var R = dataItem.get("R");
+                var G = dataItem.get("G");
+                var B = dataItem.get("B");
+                var cssClass = "RGB(" + R + "," + G + "," + B + ")";
+                cell.addClass(getUnitsInStockClass(cssClass));
+                rCell.addClass("display");
+                gCell.addClass("display");
+                bCell.addClass("display");
+            }
+        }
+
+        function getUnitsInStockClass(units) {
+            if (units == "RGB(0,255,0)") {
+                return "lightGreen";
+            }
+            if (units == "RGB(188,149,136)") {
+                return "gray";
+            }
+            if (units == "RGB(71,255,100)") {
+                return "lightGreen_2";
+            }
+            if (units == "RGB(85,69,255)") {
+                return "blue";
+            }
+            if (units == "RGB(210,162,255)") {
+                return "gray_2";
+            }
+        }
+
+        $("#vertical").kendoSplitter({
+            orientation: "vertical",
+            panes: [
+                { collapsible: false },
+                { collapsible: false, size: "100px" },
+                { collapsible: false, resizable: false, size: "100px" }
+            ]
+        });
+
+        $("#horizontal").kendoSplitter({
+            panes: [
+                { collapsible: true },
+                { collapsible: false },
+                { collapsible: true }
+            ]
+        });
+
+        $("#tbl1").kendoDraggable({
+            filter: "tr",
+            hint: function (e) {
+                var item = $('<div class="k-grid k-widget" style="background-color: MediumVioletRed; color: black;"><table><tbody><tr>' + e.html() + '</tr></tbody></table></div>');
+                return item;
+            },
+            group: "gridGroup1",
+        });
+
+        $("#tbl2").kendoDraggable({
+            filter: "tr",
+            hint: function (e) {
+                var item = $('<div class="k-grid k-widget" style="background-color: MediumVioletRed; color: black;"><table><tbody><tr>' + e.html() + '</tr></tbody></table></div>');
+                return item;
+            },
+            group: "gridGroup2",
+        });
+        $("#tbl3").kendoDraggable({
+            filter: "tr",
+            hint: function (e) {
+                var item = $('<div class="k-grid k-widget" style="background-color: MediumVioletRed; color: black;"><table><tbody><tr>' + e.html() + '</tr></tbody></table></div>');
+                return item;
+            },
+            group: "gridGroup3",
+        });
+        $("#tbl4").kendoDraggable({
+            filter: "tr",
+            hint: function (e) {
+                var item = $('<div class="k-grid k-widget" style="background-color: MediumVioletRed; color: black;"><table><tbody><tr>' + e.html() + '</tr></tbody></table></div>');
+                return item;
+            },
+            group: "gridGroup4",
+        });
+        $("#tbl5").kendoDraggable({
+            filter: "tr",
+            hint: function (e) {
+                var item = $('<div class="k-grid k-widget" style="background-color: MediumVioletRed; color: black;"><table><tbody><tr>' + e.html() + '</tr></tbody></table></div>');
+                return item;
+            },
+            group: "gridGroup5",
+        });
+        $("#tbl6").kendoDraggable({
+            filter: "tr",
+            hint: function (e) {
+                var item = $('<div class="k-grid k-widget" style="background-color: MediumVioletRed; color: black;"><table><tbody><tr>' + e.html() + '</tr></tbody></table></div>');
+                return item;
+            },
+            group: "gridGroup6",
+        });
+        $("#tbl7").kendoDraggable({
+            filter: "tr",
+            hint: function (e) {
+                var item = $('<div class="k-grid k-widget" style="background-color: MediumVioletRed; color: black;"><table><tbody><tr>' + e.html() + '</tr></tbody></table></div>');
+                return item;
+            },
+            group: "gridGroup7",
+        });
+    });
+</script>
+<style>
+    .display {
+        display: none;
+    }
+
+    .gray_2 {
+        background-color: #D2A2FF;
+    }
+
+    .blue {
+        background-color: #5941FF;
+    }
+
+    .lightGreen {
+        background-color: #00FF00;
+    }
+
+    .gray {
+        background-color: #BC9588;
+    }
+
+    .lightGreen_2 {
+        background-color: #47FF64;
+    }
+
+    #vertical {
+        height: 450px;
+        margin: 0 auto;
+    }
+
+    .k-splitter .k-scrollable {
+        overflow: hidden;
+    }
+</style>

@@ -1,0 +1,262 @@
+﻿@model List<CalenderMVC.Models.CalenderModel>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Calender</title>
+    <base href="https://demos.telerik.com/kendo-ui/grid/from-table">
+    <style>
+        html {
+            font-size: 14px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2021.2.511/styles/kendo.default-v2.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" />
+    <script src="https://kendo.cdn.telerik.com/2021.2.511/js/jquery.min.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2021.2.511/js/kendo.all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <h2>Calender</h2>
+    <div>
+        <label for="cars">Period:</label>
+        <select name="period" id="period">
+            <option value="1">1 Week</option>
+            <option value="2">2 Week</option>
+            <option value="3">Month</option>
+        </select>
+    </div><br />
+    @{
+//var list1 = new List<Tuple<string, string>>();
+//list1.Add(new Tuple<string, string>("8:00am", "Test"));
+//list1.Add(new Tuple<string, string>("3:00pm", "_t"));
+//list1.Add(new Tuple<string, string>("2:30pm", "_Business"));
+
+    }
+
+    <div id="example">
+        <div id="vertical">
+            <div id="top-pane">
+
+                <div id="horizontal" style="height: 100%; width: 100%;">
+                    <div id="left-pane">
+
+                        <div class="pane-content">
+                            <table id="tbl1" style="width:100%;">
+                                <thead>
+                                    <tr>
+                                        @foreach (var item in ViewBag.Date)
+                                        {
+                                            <th data-field="time" class="thTime"></th>
+                                            <th data-field="day">@item.DayOfWeek<br />@item.Date.ToString("dd/MM/yyyy")</th>
+                                            <th style="display:none"></th>
+                                        }
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @{
+                                        var maxvalue = Model.Count > 0 ? Model[0].maxValue : 0;
+                                     }
+                                     @for (int i = 0; i < maxvalue; i++)
+                                     {
+                                         <tr>
+                                             <td>@if (Model[0].SundayList != null && Model[0].SundayList.Count > 0 && i < Model[0].SundayList.Count){ @Model[0].SundayList[i].JobDate.TimeOfDay }</td>
+                                             <td>@if (Model[0].SundayList != null && Model[0].SundayList .Count > 0 && i < Model[0].SundayList.Count){@Model[0].SundayList[i].Name}</td>
+
+                                             <td>@if (Model[0].MondayList != null && Model[0].MondayList.Count > 0 && i < Model[0].MondayList.Count){ @Model[0].MondayList[i].JobDate.TimeOfDay }</td>
+                                             <td>@if (Model[0].MondayList != null && Model[0].MondayList.Count > 0 && i < Model[0].MondayList.Count){@Model[0].MondayList[i].Name}</td>
+
+                                             <td>@if (Model[0].TuesdayList != null && Model[0].TuesdayList.Count > 0 && i < Model[0].TuesdayList.Count){ @Model[0].TuesdayList[i].JobDate.TimeOfDay }</td>
+                                             <td>@if (Model[0].TuesdayList != null && Model[0].TuesdayList.Count > 0 && i < Model[0].TuesdayList.Count){@Model[0].TuesdayList[i].Name}</td>
+
+                                             <td>@if (Model[0].WednesdayList != null && Model[0].WednesdayList.Count > 0 && i < Model[0].WednesdayList.Count){ @Model[0].WednesdayList[i].JobDate.TimeOfDay }</td>
+                                             <td>@if (Model[0].WednesdayList != null && Model[0].WednesdayList.Count > 0 && i < Model[0].WednesdayList.Count){@Model[0].WednesdayList[i].Name}</td>
+
+                                             <td>@if (Model[0].ThursdayList != null && Model[0].ThursdayList.Count > 0 && i < Model[0].ThursdayList.Count){ @Model[0].ThursdayList[i].JobDate.TimeOfDay }</td>
+                                             <td>@if (Model[0].ThursdayList != null && Model[0].ThursdayList.Count > 0 && i < Model[0].ThursdayList.Count){@Model[0].ThursdayList[i].Name}</td>
+
+                                             <td>@if (Model[0].FridayList != null && Model[0].FridayList.Count > 0 && i < Model[0].FridayList.Count){ @Model[0].FridayList[i].JobDate.TimeOfDay }</td>
+                                             <td>@if (Model[0].FridayList != null && Model[0].FridayList.Count > 0 && i < Model[0].FridayList.Count){@Model[0].FridayList[i].Name}</td>
+
+                                             <td>@if (Model[0].SaturdayList != null && Model[0].SaturdayList.Count > 0 && i < Model[0].SaturdayList.Count){ @Model[0].SaturdayList[i].JobDate.TimeOfDay }</td>
+                                             <td>@if (Model[0].SaturdayList != null && Model[0].SaturdayList.Count > 0 && i < Model[0].SaturdayList.Count){@Model[0].SaturdayList[i].Name}</td>
+
+                                             <td style="display:none"></td>
+                                            <td style="display:none"></td>
+                                         </tr>
+                                     }
+
+                                      @*@foreach (var item in Model)
+                                    {*@
+                                        @*<tr>
+                                            <td>@if (@item.SundayList != null){@item.SundayList.JobDate.TimeOfDay}</td>
+                                            <td>@if (@item.SundayList != null){@item.SundayList.Name}</td>
+
+                                            <td>@if (@item.MondayList != null){@item.MondayList.JobDate.TimeOfDay}</td>
+                                            <td>@if (@item.MondayList != null){@item.MondayList.Name}</td>
+
+                                            <td>@if (@item.TuesdayList != null){@item.TuesdayList.JobDate.TimeOfDay}</td>
+                                            <td>@if (@item.TuesdayList != null){@item.TuesdayList.Name}</td>
+
+                                            <td>@if (@item.WednesdayList != null){@item.WednesdayList.JobDate.TimeOfDay}</td>
+                                            <td>@if (@item.WednesdayList != null){@item.WednesdayList.Name}</td>
+
+                                            <td>@if (@item.ThursdayList != null){@item.ThursdayList.JobDate.TimeOfDay}</td>
+                                            <td>@if (@item.ThursdayList != null){@item.ThursdayList.Name}</td>
+
+                                            <td>@if (@item.FridayList != null){@item.FridayList.JobDate.TimeOfDay}</td>
+                                            <td>@if (@item.FridayList != null){@item.FridayList.Name}</td>
+
+                                            <td>@if (@item.SaturdayList != null){@item.SaturdayList.JobDate.TimeOfDay}</td>
+                                            <td>@if (@item.SaturdayList != null){@item.SaturdayList.Name}</td>
+                                            <td style="display:none"></td>
+                                            <td style="display:none"></td>
+                                        </tr>*@
+                                    @*}*@
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @*@foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.days.SundayJobTime.TimeOfDay</td>
+                <td>@item.days.Sunday</td>
+
+                <td>@item.days.MondayJobTime.TimeOfDay</td>
+                <td>@item.days.Monday</td>
+
+                <td>@item.days.TuesdayJobTime.TimeOfDay</td>
+                <td>@item.days.Tuesday</td>
+
+                <td>@item.days.WednesdayJobTime.TimeOfDay</td>
+                <td>@item.days.Wednesday</td>
+
+                <td>@item.days.ThursdayJobTime.TimeOfDay</td>
+                <td>@item.days.Thursday</td>
+
+                <td>@item.days.FridayJobTime.TimeOfDay</td>
+                <td>@item.days.Friday</td>
+
+                <td>@item.days.SaturdayJobTime.TimeOfDay</td>
+                <td>@item.days.Saturday</td>
+                <td style="display:none"></td>
+                <td style="display:none"></td>
+            </tr>
+        }*@
+
+
+</body>
+</html>
+
+<script>
+    $(document).ready(function () {
+        var curr = new Date; // get current date
+        var first = curr.getDate() - curr.getDay(); // First day is the day of the month - the day of the week
+        var last = first + 6; // last day is the first day + 6
+        var firstday = new Date(curr.setDate(first)).toUTCString(); //Sun, 13 Jun 2021 10:40:37 GMT
+        var lastday = new Date(curr.setDate(last)).toUTCString();   //Sat, 19 Jun 2021 10:40:37 GMT
+
+        $("#tbl1").kendoGrid({
+            height: 550,
+            scrollable: false,
+            resizable: true,
+            draggable: true,
+            dataBound: function (e) {
+                var columns = e.sender.columns;
+                var columnIndex = this.wrapper.find(".k-grid-header [data-field=" + "day" + "]").index();
+                var rows = e.sender.tbody.children();
+                for (var j = 0; j < rows.length; j++) {
+                    var row = $(rows[j]);
+                    var dataItem = e.sender.dataItem(row);
+                    var units = dataItem.get("day");
+                    var cell = row.children().eq(columnIndex);
+                    cell.addClass(getUnitsInStockClass(units));
+                }
+            }
+        });
+
+        //function dataBound(e, columnIndex, rows) {
+        //    for (var j = 0; j < rows.length; j++) {
+        //        var row = $(rows[j]);
+        //        var dataItem = e.sender.dataItem(row);
+        //        var units = dataItem.get("day");
+        //        var cell = row.children().eq(columnIndex);
+        //        cell.addClass(getUnitsInStockClass(units));
+        //    }
+        //}
+
+        function getUnitsInStockClass(units) {
+            if (units == "Test1") {
+                return "red";
+            }
+            if (units == "Test") {
+                return "green";
+            }
+            if (units == "Test3") {
+                return "gray";
+            }
+            if (units == "Test2") {
+                return "aqua";
+            }
+            if (units == "Test4") {
+                return "aquamarine";
+            }
+            if (units == "Test5") {
+                return "aqua";
+            }
+        }
+
+        //$("#vertical").kendoSplitter({
+        //    orientation: "vertical",
+        //    panes: [
+        //        { collapsible: false },
+        //        { collapsible: false, size: "100px" },
+        //        { collapsible: false, resizable: false, size: "100px" }
+        //    ]
+        //});
+        //$("#horizontal").kendoSplitter({
+        //    panes: [
+        //        { collapsible: true },
+        //        { collapsible: false },
+        //        { collapsible: true }
+        //    ]
+        //});
+    });
+</script>
+<style>
+    .aqua {
+        background-color: aqua;
+    }
+
+    #vertical {
+        height: 450px !important;
+        margin: 0 auto !important;
+    }
+
+    .k-splitter .k-scrollable {
+        overflow: hidden;
+    }
+
+    #tbl1 th {
+        text-align: center;
+    }
+
+    .thTime {
+        width: 75px;
+    }
+
+    /*table, th, td {
+        border: 1px solid black;
+    }*/
+</style>
