@@ -54,7 +54,7 @@
                             <thead>
                                 <tr>
                                     <th data-field="time"></th>
-                                    <th data-field="day">@ViewBag.Date[0].DayOfWeek<br />@ViewBag.Date[0].ToString("dd/MM/yyyy")<label>(@sundayRows)</label></th>
+                                    <th data-field="day">@ViewBag.Date[0].DayOfWeek<br />@ViewBag.Date[0].ToString("dd/MM/yyyy")<label id="lblRows">(@sundayRows)</label></th>
                                     <th style="display:none;" data-field="R"></th>
                                     <th style="display:none;" data-field="G"></th>
                                     <th style="display:none;" data-field="B"></th>
@@ -278,7 +278,6 @@
 
 <script>
     $(document).ready(function () {
-
         var grid1 = $("#tbl1").kendoGrid({
             height: 550,
             sortable: true,
@@ -295,7 +294,7 @@
                 dataBound(e, columnIndex, rows, rIndex, gIndex, bIndex);
             }
         });
-
+        
         var grid2 = $("#tbl2").kendoGrid({
             height: 550,
             sortable: true,
@@ -461,7 +460,6 @@
             },
             group: "gridGroup1",
         });
-
         $("#tbl2").kendoDraggable({
             filter: "tr",
             hint: function (e) {
@@ -509,7 +507,7 @@
                 return item;
             },
             group: "gridGroup7",
-        });
+        });        
     });
 </script>
 <style>
